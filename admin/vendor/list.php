@@ -54,7 +54,9 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                     <tr>
                         <td class="text-center"><?php echo $i++; ?></td>
                         <td><?php echo date("Y-m-d H:i",strtotime($row['date_updated'])) ?></td>
-                        <td><?php echo $row['vendor_name'] ?></td>
+                        <td> <a href="?page=vendor/vendor_item&vendor_id=<?= $row['id'] ?>">
+                                <?php echo $row['vendor_name']; ?>
+                            </a></td>
                         <td><?php echo $row['gst_no'] ?></td>
                         <td><?php echo $row['contacr_person'] ?></td>
                         <td><?php echo $row['phone'] ?></td>

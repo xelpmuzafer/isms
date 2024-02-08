@@ -1,5 +1,6 @@
 <?php 
-$month = isset($_GET['month']) ? $_GET['month'] : date("Y-m");
+$start_date = isset($_GET['start_date']) ? date('Y-m-01', strtotime($_GET['start_date'])) : date('Y-m-01');
+$end_date = isset($_GET['end_date']) ? date('Y-m-t', strtotime($_GET['end_date'])) : date('Y-m-t');
 ?>
 <div class="content py-5 px-3 bg-gradient-teal">
     <h2>Monthly Stock-In Reports</h2>
@@ -14,11 +15,25 @@ $month = isset($_GET['month']) ? $_GET['month'] : date("Y-m");
                         <div class="row align-items-end">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
+                                    <label for="start_date" class="control-label">Start Date</label>
+                                    <input type="date" class="form-control form-control-sm rounded-0" name="start_date"
+                                        id="start_date" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="end_date" class="control-label">End Date</label>
+                                    <input type="date" class="form-control form-control-sm rounded-0" name="end_date"
+                                        id="end_date" required="required">
+                                </div>
+                            </div>
+                            <!--  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
                                     <label for="month" class="control-label">Choose Month</label>
                                     <input type="month" class="form-control form-control-sm rounded-0" name="month"
                                         id="month" value="<?= $month ?>" required="required">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <button class="btn btn-sm btn-flat btn-primary bg-gradient-primary"><i
@@ -63,7 +78,11 @@ $month = isset($_GET['month']) ? $_GET['month'] : date("Y-m");
                             <?php 
                             $g_total = 0;
                             $i = 1;
-                            $stock = $conn->query("SELECT s.*, i.name as `item`, c.name as `category`, i.unit FROM `stockin_list` s inner join `item_list` i on s.item_id = i.id inner join category_list c on i.category_id = c.id where date_format(s.date, '%Y-%m') = '{$month}' order by date(s.`date`) asc");
+                            $stock = $conn->query("SELECT s.*, i.name as `item`, c.name as `category`, i.unit FROM `stockin_list` s 
+                            inner join `item_list` i on s.item_id = i.id 
+                            inner join category_list c on i.category_id = c.id 
+                            where (s.date BETWEEN '{$start_date}' AND '{$end_date}')
+                            order by date(s.`date`) asc");
                             while($row = $stock->fetch_assoc()):
                             ?>
                             <tr>
