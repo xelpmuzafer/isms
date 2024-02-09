@@ -1,6 +1,7 @@
 <?php 
 $start_date = isset($_GET['start_date']) ? date('Y-m-01', strtotime($_GET['start_date'])) : date('Y-m-01');
 $end_date = isset($_GET['end_date']) ? date('Y-m-t', strtotime($_GET['end_date'])) : date('Y-m-t');
+$item_id = isset($_GET['item_id']) ? $_GET['item_id'] : null;
 ?>
 <div class="content py-5 px-3 bg-gradient-teal">
     <h2>Monthly Stock-In Reports</h2>
@@ -13,28 +14,38 @@ $end_date = isset($_GET['end_date']) ? date('Y-m-t', strtotime($_GET['end_date']
                     <legend>Filter</legend>
                     <form action="" id="filter-form">
                         <div class="row align-items-end">
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="start_date" class="control-label">Start Date</label>
                                     <input type="date" class="form-control form-control-sm rounded-0" name="start_date"
-                                        id="start_date" required="required">
+                                        id="start_date" value="<?= $start_date ?>" required="required">
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label for="end_date" class="control-label">End Date</label>
                                     <input type="date" class="form-control form-control-sm rounded-0" name="end_date"
-                                        id="end_date" required="required">
+                                        id="end_date" required="required" value="<?= $end_date ?>">
                                 </div>
                             </div>
-                            <!--  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="month" class="control-label">Choose Month</label>
-                                    <input type="month" class="form-control form-control-sm rounded-0" name="month"
-                                        id="month" value="<?= $month ?>" required="required">
+                                    <label for="item_id" class="control-label">Select Item</label>
+                                    <select name="item_id" id="item_id" class="form-control form-control-sm rounded-0">
+                                        <option value="" <?= empty($item_id) ? 'selected' : '' ?>>Select Item</option>
+                                        <?php
+                                    $items = $conn->query("SELECT * FROM `item_list`");
+                                    while ($item = $items->fetch_assoc()):
+                                    ?>
+                                        <option value="<?= $item['id'] ?>"
+                                            <?= ($item_id == $item['id']) ? 'selected' : '' ?>>
+                                            <?= $item['name'] ?>
+                                        </option>
+                                        <?php endwhile; ?>
+                                    </select>
                                 </div>
-                            </div> -->
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            </div>
+                            <div class="col-lg-1 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <button class="btn btn-sm btn-flat btn-primary bg-gradient-primary"><i
                                             class="fa fa-filter"></i> Filter</button>
@@ -82,8 +93,10 @@ $end_date = isset($_GET['end_date']) ? date('Y-m-t', strtotime($_GET['end_date']
                             inner join `item_list` i on s.item_id = i.id 
                             inner join category_list c on i.category_id = c.id 
                             where (s.date BETWEEN '{$start_date}' AND '{$end_date}')
+                            AND (s.item_id = '{$item_id}' OR '{$item_id}' = '')
                             order by date(s.`date`) asc");
                             while($row = $stock->fetch_assoc()):
+                            
                             ?>
                             <tr>
                                 <td class="px-1 py-1 align-middle text-center"><?= $i++ ?></td>
