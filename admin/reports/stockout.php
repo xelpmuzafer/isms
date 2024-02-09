@@ -14,13 +14,29 @@ $month = isset($_GET['month']) ? $_GET['month'] : date("Y-m");
                         <div class="row align-items-end">
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <label for="month" class="control-label">Choose Month</label>
-                                    <input type="month" class="form-control form-control-sm rounded-0" name="month" id="month" value="<?= $month ?>" required="required">
+                                    <label for="start_date" class="control-label">Start Date</label>
+                                    <input type="date" class="form-control form-control-sm rounded-0" name="start_date"
+                                        id="start_date" required="required">
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <button class="btn btn-sm btn-flat btn-primary bg-gradient-primary"><i class="fa fa-filter"></i> Filter</button>
+                                    <label for="end_date" class="control-label">End Date</label>
+                                    <input type="date" class="form-control form-control-sm rounded-0" name="end_date"
+                                        id="end_date" required="required">
+                                </div>
+                            </div>
+                            <!--  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="month" class="control-label">Choose Month</label>
+                                    <input type="month" class="form-control form-control-sm rounded-0" name="month"
+                                        id="month" value="<?= $month ?>" required="required">
+                                </div>
+                            </div> -->
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-flat btn-primary bg-gradient-primary"><i
+                                            class="fa fa-filter"></i> Filter</button>
                                 </div>
                             </div>
                         </div>
