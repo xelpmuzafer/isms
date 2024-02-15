@@ -29,7 +29,7 @@
   <!-- /.col -->
   <div class="col-12 col-sm-4 col-md-4">
     <div class="info-box">
-      <span class="info-box-icon bg-gradient-teal elevation-1"><i class="fas fa-seedling"></i></span>
+      <span class="info-box-icon bg-teal elevation-1"><i class="fas fa-seedling"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Items</span>
         <span class="info-box-number text-right h5">

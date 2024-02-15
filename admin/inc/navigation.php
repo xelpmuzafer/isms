@@ -2,15 +2,21 @@
 .sidebar a.nav-link.active {
     color: #fff !important
 }
+.bg-primus{
+    background: #075963 !important;
+}
+.text-while{
+    color: #ffffff !important;
+}
 </style>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-teal navbar-light elevation-4 sidebar-no-expand">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url ?>admin" class="brand-link bg-teal text-sm">
+    <a href="<?php echo base_url ?>admin" class="brand-link bg-primus text-sm">
         <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo"
             class="brand-image img-circle elevation-3"
             style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
-        <span class="brand-text font-weight-light"><?php echo $_settings->info('short_name') ?></span>
+        <span class="brand-text font-weight-light text-while"><?php echo $_settings->info('short_name') ?></span>
     </a>
     <!-- Sidebar -->
     <div
@@ -167,6 +173,6 @@ $(document).ready(function() {
         }
 
     }
-    $('.nav-link.active').addClass('bg-gradient-teal')
+    $('.nav-link.active').addClass('bg-teal')
 })
 </script>

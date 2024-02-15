@@ -774,7 +774,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-switch.custom-switch-off-teal .custom-control-input ~ .custom-control-label::before {
-  background-color: #20c997;
+  background-color: #075963;
   border-color: #127155;
 }
 
@@ -787,7 +787,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-switch.custom-switch-on-teal .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #20c997;
+  background-color: #075963;
   border-color: #127155;
 }
 
@@ -1800,7 +1800,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-teal::-webkit-slider-thumb {
-  background-color: #20c997;
+  background-color: #075963;
 }
 
 .custom-range.custom-range-teal::-webkit-slider-thumb:active {
@@ -1808,7 +1808,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-teal::-moz-range-thumb {
-  background-color: #20c997;
+  background-color: #075963;
 }
 
 .custom-range.custom-range-teal::-moz-range-thumb:active {
@@ -1816,7 +1816,7 @@ body.text-sm .input-group-text {
 }
 
 .custom-range.custom-range-teal::-ms-thumb {
-  background-color: #20c997;
+  background-color: #075963;
 }
 
 .custom-range.custom-range-teal::-ms-thumb:active {
@@ -2556,8 +2556,8 @@ body.text-sm .input-group-text {
 }
 
 .custom-control-input-teal:checked ~ .custom-control-label::before {
-  border-color: #20c997;
-  background-color: #20c997;
+  border-color: #075963;
+  background-color: #075963;
 }
 
 .custom-control-input-teal.custom-control-input-outline:checked[type="checkbox"] ~ .custom-control-label::after {
@@ -4377,7 +4377,7 @@ body.text-sm .input-group-text {
 }
 
 .card-teal:not(.card-outline) > .card-header {
-  background-color: #20c997;
+  background-color: #075963;
 }
 
 .card-teal:not(.card-outline) > .card-header,
@@ -4390,7 +4390,7 @@ body.text-sm .input-group-text {
 }
 
 .card-teal.card-outline {
-  border-top: 3px solid #20c997;
+  border-top: 3px solid #075963;
 }
 
 .card-teal.card-outline-tabs > .card-header a:hover {
@@ -4398,7 +4398,7 @@ body.text-sm .input-group-text {
 }
 
 .card-teal.card-outline-tabs > .card-header a.active {
-  border-top: 3px solid #20c997;
+  border-top: 3px solid #075963;
 }
 
 .bg-teal .btn-tool,
@@ -5192,7 +5192,7 @@ html.maximized-card {
 }
 
 .todo-list .teal {
-  border-left-color: #20c997;
+  border-left-color: #075963;
 }
 
 .todo-list .cyan {

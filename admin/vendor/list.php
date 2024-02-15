@@ -15,7 +15,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
     <div class="card-header">
         <h3 class="card-title">List of Vendors</h3>
         <div class="card-tools">
-            <a href="./?page=vendor/manage_vendor" id="create_new" class="btn btn-flat btn-primary"><span
+            <a href="./?page=vendor/manage_vendor" id="create_new" class="btn btn-flat bg-teal"><span
                     class="fas fa-plus"></span> Create New</a>
         </div>
     </div>

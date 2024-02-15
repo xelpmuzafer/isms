@@ -3,7 +3,7 @@ $start_date = isset($_GET['start_date']) ? date('Y-m-01', strtotime($_GET['start
 $end_date = isset($_GET['end_date']) ? date('Y-m-t', strtotime($_GET['end_date'])) : date('Y-m-t');
 $item_id = isset($_GET['item_id']) ? $_GET['item_id'] : null;
 ?>
-<div class="content py-5 px-3 bg-gradient-teal">
+<div class="content py-5 px-3 bg-teal">
     <h2>Monthly Stock-Out Reports</h2>
 </div>
 <div class="row flex-column mt-4 justify-content-center align-items-center mt-lg-n4 mt-md-3 mt-sm-0">

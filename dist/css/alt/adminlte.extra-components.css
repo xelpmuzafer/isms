@@ -960,13 +960,13 @@
 }
 
 .direct-chat-teal .right > .direct-chat-text {
-  background-color: #20c997;
-  border-color: #20c997;
+  background-color: #075963;
+  border-color: #075963;
   color: #fff;
 }
 
 .direct-chat-teal .right > .direct-chat-text::after, .direct-chat-teal .right > .direct-chat-text::before {
-  border-left-color: #20c997;
+  border-left-color: #075963;
 }
 
 .direct-chat-cyan .right > .direct-chat-text {
