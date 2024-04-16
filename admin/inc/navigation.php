@@ -14,7 +14,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-light-teal navbar-light elevation-4 sidebar-no-expand">
     <!-- Brand Logo -->
-    <a href="http://43.204.80.31/bangalore/admin/dashboard" class="brand-link bg-primus text-sm">
+    <a href="https://uat.reverely.ai/bangalore/admin/dashboard" class="brand-link bg-primus text-sm">
         <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo"
             class="brand-image img-circle elevation-3"
             style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
