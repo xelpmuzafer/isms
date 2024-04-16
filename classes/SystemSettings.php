@@ -22,6 +22,7 @@ class SystemSettings extends DBConnection{
 		// }
 	}
 	function update_system_info(){
+		
 		$sql = "SELECT * FROM system_info";
 		$qry = $this->conn->query($sql);
 			while($row = $qry->fetch_assoc()){
@@ -31,7 +32,10 @@ class SystemSettings extends DBConnection{
 		return true;
 	}
 	function update_settings_info(){
+
 		$data = "";
+
+		console.log("update_settings_info", "Data");
 		foreach ($_POST as $key => $value) {
 			if(!in_array($key,array("content")))
 			if(isset($_SESSION['system_info'][$key])){
@@ -248,6 +252,7 @@ $_settings = new SystemSettings();
 $_settings->load_system_info();
 $action = !isset($_GET['f']) ? 'none' : strtolower($_GET['f']);
 $sysset = new SystemSettings();
+
 switch ($action) {
 	case 'update_settings':
 		echo $sysset->update_settings_info();
@@ -257,3 +262,4 @@ switch ($action) {
 		break;
 }
 ?>
+
