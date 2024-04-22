@@ -56,11 +56,12 @@ $(document).ready(function() {
                 if (typeof resp == 'object' && resp.status == 'success') {
                     // location.reload()
                     alert_toast(resp.msg, 'success')
-                    uni_modal("<i class='fa fa-th-list'></i> Category Details ",
-                        "categories/view_category.php?id=" + resp.cid)
-                    $('#uni_modal').on('hide.bs.modal', function() {
-                        location.reload()
-                    })
+                    window.location.reload();
+                    // uni_modal("<i class='fa fa-th-list'></i> Category Details ",
+                    //     "categories/view_category.php?id=" + resp.cid)
+                    // $('#uni_modal').on('hide.bs.modal', function() {
+                    //     location.reload()
+                    // })
                 } else if (resp.status == 'failed' && !!resp.msg) {
                     var el = $('<div>')
                     el.addClass("alert alert-danger err-msg").text(resp.msg)

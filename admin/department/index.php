@@ -69,17 +69,17 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <div class="dropdown-menu" role="menu">
-                                <a class="dropdown-item view-data" href="javascript:void(0)"
+                                <!-- <a class="dropdown-item view-data" href="javascript:void(0)"
                                     data-id="<?php echo $row['id'] ?>"><span class="fa fa-eye text-dark"></span>
-                                    View</a>
-                                <div class="dropdown-divider"></div>
+                                    View</a> -->
+                                <!-- <div class="dropdown-divider"></div> -->
                                 <a class="dropdown-item edit-data" href="javascript:void(0)"
                                     data-id="<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span>
                                     Edit</a>
                                 <div class="dropdown-divider"></div>
-                                <!--  <a class="dropdown-item delete_data" href="javascript:void(0)"
+                                 <a class="dropdown-item delete_data" href="javascript:void(0)"
                                     data-id="<?php //echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span>
-                                    Delete</a> -->
+                                    Delete</a>
                             </div>
                         </td>
                     </tr>
@@ -100,13 +100,14 @@ $(document).ready(function() {
             "department/manage_department.php")
     })
     $('.edit-data').click(function() {
-        uni_modal("<i class='fa fa-edit'></i> Add New Department ",
+        uni_modal("<i class='fa fa-edit'></i> Edit Department ",
             "department/manage_department.php?id=" +
             $(this).attr('data-id'))
     })
     $('.view-data').click(function() {
-        uni_modal("<i class='fa fa-th-list'></i> Category Details ",
-            "department/view_department.php?id=" + $(this).attr('data-id'))
+        uni_modal("<i class='fa fa-edit'></i> View Department ",
+            "department/manage_department.php?id=" +
+            $(this).attr('data-id'))
     })
     $('.table').dataTable({
         columnDefs: [{

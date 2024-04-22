@@ -3,7 +3,7 @@ $dev_data = array('id'=>'-1','firstname'=>'Developer','lastname'=>'','username'=
 if(!defined('base_app')) define('base_app', str_replace('\\','/',__DIR__).'/' );
 // if(!defined('dev_data')) define('dev_data',$dev_data);
 
-define('ENV', 'dev');
+define('ENV', 'uat');
 if(ENV=='dev'){
     if(!defined('base_url')) define('base_url','http://rnd.xelpmoc.in:8000/isms/');
     if(!defined('DB_SERVER')) define('DB_SERVER',"localhost");
