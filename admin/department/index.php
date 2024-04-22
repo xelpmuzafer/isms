@@ -77,11 +77,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                                     data-id="<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span>
                                     Edit</a>
                                 <div class="dropdown-divider"></div>
-<<<<<<< HEAD
-                               <!--  <a class="dropdown-item delete_data" href="javascript:void(0)"
-=======
                                 <!--  <a class="dropdown-item delete_data" href="javascript:void(0)"
->>>>>>> 5cc2cb9610731bf034de0e0b89f0f2e5a332d36d
                                     data-id="<?php //echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span>
                                     Delete</a> -->
                             </div>
