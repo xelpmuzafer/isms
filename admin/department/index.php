@@ -78,7 +78,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                                     Edit</a>
                                 <div class="dropdown-divider"></div>
                                  <a class="dropdown-item delete_data" href="javascript:void(0)"
-                                    data-id="<?php //echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span>
+                                    data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span>
                                     Delete</a>
                             </div>
                         </td>
@@ -119,10 +119,10 @@ $(document).ready(function() {
     $('.dataTable td,.dataTable th').addClass('py-1 px-2 align-middle')
 })
 
-function delete_category($id) {
+function delete_department($id) {
     start_loader();
     $.ajax({
-        url: _base_url_ + "classes/Master.php?f=delete_category",
+        url: _base_url_ + "classes/Master.php?f=delete_department",
         method: "POST",
         data: {
             id: $id

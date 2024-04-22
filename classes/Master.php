@@ -136,6 +136,20 @@ Class Master extends DBConnection {
 		return json_encode($resp);
 
 	}
+
+	function delete_department(){
+		extract($_POST);
+		$del = $this->conn->query("UPDATE `department_list` set `delete_flag` = 1 where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success'," Department successfully deleted.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+	}
+
 	function save_item(){
 		extract($_POST);
 		$data = "";
@@ -436,6 +450,9 @@ switch ($action) {
 	break;
 	case 'load_category':
 		echo $Master->load_category();
+		break;
+	case 'delete_department':
+		echo $Master->delete_department();
 		break;
 	default:
 		// echo $sysset->index();
