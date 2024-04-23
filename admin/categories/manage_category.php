@@ -18,7 +18,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 required="required">
                 <?php
 				// Fetch department data
-				$department_query = $conn->query("SELECT * FROM `department_list`");
+				$department_query = $conn->query("SELECT * FROM `department_list` WHERE delete_flag = 0 and `status` = 1 ");
 				while ($department_row = $department_query->fetch_assoc()) {
 					$selected = isset($department) && $department == $department_row['id'] ? 'selected' : '';
 					echo "<option value='{$department_row['id']}' {$selected}>{$department_row['name']}</option>";
