@@ -49,7 +49,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
 					?>
                     <tr>
                         <td class="text-center serial-number"><?php echo $i++; ?></td>
-                        <td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+                        <td><?php echo date("Y-m-d",strtotime($row['date_created'])) ?></td>
                         <td class="">
                             <div style="line-height:1em">
                                 <div><?= $row['name'] ?> [<?= $row['unit'] ?>]</div>

@@ -48,7 +48,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
 					?>
                     <tr>
                         <td class="text-center serial-number"><?php echo $i++; ?></td>
-                        <td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
+                        <td><?php echo date("Y-m-d ",strtotime($row['date_created'])) ?></td>
                         <td class=""><?= $row['name'] ?></td>
                         <td class="">
                             <p class="mb-0 truncate-1"><?= strip_tags(htmlspecialchars_decode($row['description'])) ?>
