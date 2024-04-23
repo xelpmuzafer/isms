@@ -112,14 +112,14 @@
                                 </ul>
                             </li>
                             <li class="nav-header">Maintenance</li>
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a href="<?php echo base_url ?>admin/?page=user/list" class="nav-link nav-user_list">
                                     <i class="nav-icon fas fa-users-cog"></i>
                                     <p>
                                         User List
                                     </p>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item dropdown">
                                 <a href="<?php echo base_url ?>admin/?page=vendor/list"
                                     class="nav-link nav-vendor_list">
@@ -129,7 +129,7 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a href="<?php echo base_url ?>admin/?page=system_info"
                                     class="nav-link nav-system_info">
                                     <i class="nav-icon fas fa-tools"></i>
@@ -137,7 +137,7 @@
                                         System Information
                                     </p>
                                 </a>
-                            </li>
+                            </li> -->
                             <?php endif; ?>
                         </ul>
                     </nav>

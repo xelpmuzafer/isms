@@ -43,11 +43,11 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                 <tbody>
                     <?php 
 					$i = 1;
-						$qry = $conn->query("SELECT * from `category_list` where delete_flag = 0 order by `name` asc ");
+						$qry = $conn->query("SELECT * from `category_list` where delete_flag = 0 order by `date_created` desc ");
 						while($row = $qry->fetch_assoc()):
 					?>
                     <tr>
-                        <td class="text-center"><?php echo $i++; ?></td>
+                        <td class="text-center serial-number"><?php echo $i++; ?></td>
                         <td class="">
                             <?php
 							$department_id = $row['department_id'];
@@ -153,4 +153,16 @@ function delete_category($id) {
         }
     })
 }
+
+// Function to update serial numbers after reordering
+function updateSerialNumbers() {
+    $('.serial-number').each(function(index) {
+        $(this).text(index + 1);
+    });
+}
+
+// Listen for reordering event and update serial numbers
+$('#list').on('order.dt', function() {
+    updateSerialNumbers();
+});
 </script>

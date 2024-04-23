@@ -43,11 +43,12 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                 <tbody>
                     <?php 
 					$i = 1;
-						$qry = $conn->query("SELECT i.*, c.name as `category` from `item_list` i inner join category_list c on i.category_id = c.id where i.delete_flag = 0 order by i.`name` asc ");
-						while($row = $qry->fetch_assoc()):
+                        $qry = $conn->query("SELECT i.*, c.name as `category` from `item_list` i inner join category_list c on i.category_id = c.id where i.delete_flag = 0 order by i.`date_created` desc ");
+                        while($row = $qry->fetch_assoc()):
+                ?>
 					?>
                     <tr>
-                        <td class="text-center"><?php echo $i++; ?></td>
+                        <td class="text-center serial-number"><?php echo $i++; ?></td>
                         <td><?php echo date("Y-m-d H:i",strtotime($row['date_created'])) ?></td>
                         <td class="">
                             <div style="line-height:1em">
@@ -144,4 +145,16 @@ function delete_item($id) {
         }
     })
 }
+
+// Function to update serial numbers after reordering
+function updateSerialNumbers() {
+    $('.serial-number').each(function(index) {
+        $(this).text(index + 1);
+    });
+}
+
+// Listen for reordering event and update serial numbers
+$('#list').on('order.dt', function() {
+    updateSerialNumbers();
+});
 </script>

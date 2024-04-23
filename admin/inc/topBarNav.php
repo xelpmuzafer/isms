@@ -51,11 +51,11 @@
                   <button type="button" class="btn btn-rounded badge badge-light dropdown-toggle dropdown-icon" data-toggle="dropdown">
                     <span><img src="<?php echo validate_image($_settings->userdata('avatar')) ?>" class="img-circle elevation-2 user-img" alt="User Image"></span>
                     <span class="ml-3"><?php echo ucwords($_settings->userdata('firstname').' '.$_settings->userdata('lastname')) ?></span>
-                    <span class="sr-only">Toggle Dropdown</span>
+                    <!-- <span class="sr-only">Toggle Dropdown</span> -->
                   </button>
-                  <div class="dropdown-menu" role="menu">
+                  <!-- <div class="dropdown-menu" role="menu">
                     <a class="dropdown-item" href="<?php echo base_url.'admin/?page=user' ?>"><span class="fa fa-user"></span> My Account</a>
-                  </div>
+                  </div> -->
               </div>
           </li>
           <li class="nav-item">
