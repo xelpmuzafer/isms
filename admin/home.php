@@ -6,7 +6,7 @@
     object-position:center center;
   }
 </style>
-<h1 class="">Welcome, <?php echo $_settings->userdata('firstname')." ".$_settings->userdata('lastname') ?>!</h1>
+<h1 class="">Welcome, <?php echo $_settings->userdata('username')?>!</h1>
 <hr>
 <div class="row">
   <div class="col-12 col-sm-4 col-md-4">
