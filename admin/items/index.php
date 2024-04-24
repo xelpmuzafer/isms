@@ -46,7 +46,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                         $qry = $conn->query("SELECT i.*, c.name as `category` from `item_list` i inner join category_list c on i.category_id = c.id where i.delete_flag = 0 order by i.`date_created` desc ");
                         while($row = $qry->fetch_assoc()):
                 ?>
-					?>
+				
                     <tr>
                         <td class="text-center serial-number"><?php echo $i++; ?></td>
                         <td><?php echo date("Y-m-d",strtotime($row['date_created'])) ?></td>
