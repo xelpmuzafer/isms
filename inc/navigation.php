@@ -6,6 +6,9 @@
         <img src="<?php echo validate_image($_settings->info('logo'))?>" alt="Store Logo" class="brand-image img-circle elevation-3" style="opacity: .8;width: 1.5rem;height: 1.5rem;max-height: unset">
         <span class="brand-text font-weight-light"><?php echo $_settings->info('short_name') ?></span>
         </a>
+
+        
+
         <!-- Sidebar -->
         <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
           <div class="os-resize-observer-host observed">
@@ -45,7 +48,7 @@
                       <a href="<?php echo base_url ?>admin/?page=categories" class="nav-link nav-categories">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
-                          Category List
+                          Category List 
                         </p>
                       </a>
                     </li>

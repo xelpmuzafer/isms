@@ -65,12 +65,56 @@ class Login extends DBConnection {
 		}
 		return json_encode($resp);
 	}
+
+    public function getLocationList() {
+	// API endpoint URL
+	$url = DASH_API . '/v1/super-admin/location-list';
+	
+  
+	
+	// $accessToken = $this->session->userdata('access_token');
+	$accessToken = $this->settings->userdata('token');
+		// print_r($accessToken); die;
+			// Headers
+	$headers = array(
+		'Accept: application/json',
+		'Authorization: Bearer ' . $accessToken
+	);
+  
+	// Set up HTTP headers
+	$header_str = implode("\r\n", $headers);
+  
+	// Set up stream context options
+	$options = array(
+		'http' => array(
+			'method' => 'GET',
+			'header' => $header_str
+		)
+	);
+  
+	// Create stream context
+	$context = stream_context_create($options);
+  
+	// Send HTTP request and get response
+	$response = file_get_contents($url, false, $context);
+  
+	$decoded_response = json_decode($response, true); // true for associative array
+  
+	// Return API response
+	return $decoded_response['resource']['data'];
+  }
+
 	public function logout_customer(){
 		if($this->settings->sess_des()){
 			redirect('?');
 		}
 	}
 	public function auth_inventory(){
+		
+
+
+		// print_r($loc_id); die;
+
 		$id =$_GET['platform_user_id'];
 		$url = 'http://roster.reverely.ai/api/employee?id='.$id;
 		$options = array(
@@ -84,7 +128,66 @@ class Login extends DBConnection {
 		$context = stream_context_create($options);
 		$response = file_get_contents($url, false, $context);	
 
-		$this->settings->set_userdata('login_type',1);
+
+		$token = $_GET['token'];
+		$loc_id = $_GET['loc_id'];
+
+		$this->settings->set_userdata('token',$token);
+		$this->settings->set_userdata('loc_id',$loc_id);
+
+		//fetch Locations
+		//save to set_userdata
+		
+
+		try{
+			$url = DASH_API . '/v1/super-admin/location-list';
+	
+  
+			
+			// $accessToken = $this->session->userdata('access_token');
+			$accessToken = $this->settings->userdata('token');
+				// print_r($accessToken); die;
+					// Headers
+			$headers = array(
+				'Accept: application/json',
+				'Authorization: Bearer ' . $accessToken
+			);
+		
+			// Set up HTTP headers
+			$header_str = implode("\r\n", $headers);
+		
+			// Set up stream context options
+			$options = array(
+				'http' => array(
+					'method' => 'GET',
+					'header' => $header_str
+				)
+			);
+		
+			// Create stream context
+			$context = stream_context_create($options);
+		
+			// Send HTTP request and get response
+			$response = file_get_contents($url, false, $context);
+		
+			$decoded_response = json_decode($response, true);
+			
+			
+
+			$locations = $decoded_response['resource']['data'];
+
+			$this->settings->set_userdata('locations',$locations);
+			
+
+		}catch(Exception $e){
+				print_r($e); die;
+		}
+
+
+
+		$this->settings->set_userdata('type',1);
+
+
 
 		// die;	
 		  

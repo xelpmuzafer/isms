@@ -47,6 +47,18 @@
           </li> -->
           <!-- Messages Dropdown Menu -->
           <li class="nav-item">
+          <li class="nav-item mx-4" style='margin-right:15px'>
+          <select  onchange='changeLocation()'  id="location-select" class=' form-select custom-select text-white  bg-info  '>
+                                <option>Select Location</option>
+                                <?Php foreach ($_settings->userdata('locations') as $values): ?>
+                                    <option value="<?php echo $values['id'] ?>"    
+                                    
+                                    <?php if($_settings->userdata('loc_id') == $values['id'] ) echo 'selected'  ?> >
+                                        <?php echo $values['name'] ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                            </select>
+          </li>
             <div class="btn-group nav-link">
                   <!-- <button type="button" class="btn btn-rounded badge badge-light dropdown-toggle dropdown-icon" data-toggle="dropdown"> -->
                     <span><img  src="<?php echo validate_image($_settings->userdata('avatar1')) ?>" class="img-circle  p-0 elevation-1 user-img mt-2" alt="User Image"></span>
@@ -57,9 +69,7 @@
                   <!-- </div> -->
               </div>
           </li>
-          <li class="nav-item">
-            
-          </li>
+          
          <!--  <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
             <i class="fas fa-th-large"></i>
@@ -68,3 +78,36 @@
         </ul>
       </nav>
       <!-- /.navbar -->
+
+
+    <script>
+
+
+
+function changeLocation() {
+    $loc_id = document.getElementById('location-select').value
+    start_loader();
+    $.ajax({
+        url: _base_url_ + "classes/Master.php?f=change_location",
+        method: "POST",
+        data: {
+            loc_id: $loc_id
+        },
+        dataType: "json",
+        error: err => {
+            console.log("Error", err)
+            alert_toast("An error occured.", 'error');
+            end_loader();
+        },
+        success: function(resp) {
+            if (typeof resp == 'object' && resp.status == 'success') {
+                location.reload();
+            } else {
+                alert_toast("An error occured.", 'error');
+                end_loader();
+            }
+        }
+    })
+}
+
+    </script>

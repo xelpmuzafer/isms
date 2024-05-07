@@ -89,6 +89,10 @@ Class Master extends DBConnection {
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
+		$loc_id = $this->settings->userdata("loc_id");
+		
+		$data .= ", `loc_id`={$loc_id} ";
+
 		$check = $this->conn->query("SELECT * FROM `department_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")." ")->num_rows;
 		if($this->capture_err())
 			return $this->capture_err();
@@ -103,6 +107,8 @@ Class Master extends DBConnection {
 		}else{
 			$sql = "UPDATE `department_list` set {$data} where id = '{$id}' ";
 		}
+
+
 			$save = $this->conn->query($sql);
 		if($save){
 			$cid = !empty($id) ? $id : $this->conn->insert_id;
@@ -134,6 +140,17 @@ Class Master extends DBConnection {
 			$resp['error'] = $this->conn->error;
 		}
 		return json_encode($resp);
+
+	}
+
+	function change_location(){
+		extract($_POST);
+		
+		$this->settings->set_userdata("loc_id", $loc_id);
+		$resp['status'] = 'success';
+
+		return json_encode($resp);
+
 
 	}
 
@@ -453,6 +470,9 @@ switch ($action) {
 		break;
 	case 'delete_department':
 		echo $Master->delete_department();
+		break;
+	case 'change_location':
+		echo $Master->change_location();
 		break;
 	default:
 		// echo $sysset->index();

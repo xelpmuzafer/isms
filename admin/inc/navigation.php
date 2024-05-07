@@ -51,7 +51,7 @@
                                 <a href="./?page=department" class="nav-link nav-department">
                                     <i class="nav-icon fas fa-th-list"></i>
                                     <p>
-                                        Department List
+                                        Department List  
                                     </p>
                                 </a>
                             </li>
@@ -80,6 +80,7 @@
                                 </a>
                             </li>
                             <?php if($_settings->userdata('type') == 1): ?>
+
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-table"></i>

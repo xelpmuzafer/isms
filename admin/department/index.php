@@ -43,8 +43,8 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                 <tbody>
                     <?php 
 					$i = 1;
-						$qry = $conn->query("SELECT * from `department_list` where delete_flag = 0 order by `date_created` desc");
-						while($row = $qry->fetch_assoc()):
+                    $qry = $conn->query("SELECT * FROM `department_list` WHERE delete_flag = 0 AND loc_id=" . $_settings->userdata('loc_id') . " ORDER BY `date_created` DESC");
+                    while($row = $qry->fetch_assoc()):
 					?>
                     <tr>
                         <td class="text-center serial-number"><?php echo $i++; ?></td>
