@@ -19,7 +19,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 required="required" onchange="loadCategories()">
                 <?php
                 // Fetch department data
-                $department_query = $conn->query("SELECT * FROM `department_list` WHERE delete_flag=0 and `status` = 1 ");
+                $department_query = $conn->query("SELECT * FROM `department_list` WHERE delete_flag=0 and `status` = 1 AND loc_id=" . $_settings->userdata('loc_id') . "");
                 while ($department_row = $department_query->fetch_assoc()) {
                     $selected = isset($department) && $department == $department_row['id'] ? 'selected' : '';
                     echo "<option value='{$department_row['id']}' {$selected}>{$department_row['name']}</option>";
@@ -33,7 +33,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 required="required">
                 <option value="" <?= isset($category_id) ? 'selected' : '' ?>></option>
                 <?php 
-				$items = $conn->query("SELECT * FROM `category_list` where delete_flag = 0 and `status` = 1 ");
+				$items = $conn->query("SELECT * FROM `category_list` where delete_flag = 0 and `status` = 1 AND loc_id=" . $_settings->userdata('loc_id') . "");
 				while($row= $items->fetch_assoc()):
 				?>
                 <option value="<?= $row['id'] ?>"

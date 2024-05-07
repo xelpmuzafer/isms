@@ -46,6 +46,10 @@ Class Master extends DBConnection {
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
+
+		$loc_id = $this->settings->userdata("loc_id");
+		
+		$data .= ", `loc_id`={$loc_id} ";
 		//return json_encode($data);
 		$check = $this->conn->query("SELECT * FROM `category_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")." ")->num_rows;
 		if($this->capture_err())
@@ -177,6 +181,9 @@ Class Master extends DBConnection {
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
+		$loc_id = $this->settings->userdata("loc_id");
+		
+		$data .= ", `loc_id`={$loc_id} ";
 		$check = $this->conn->query("SELECT * FROM `item_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")." ")->num_rows;
 		if($this->capture_err())
 			return $this->capture_err();
