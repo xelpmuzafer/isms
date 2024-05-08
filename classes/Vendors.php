@@ -26,6 +26,9 @@ class Vendors extends DBConnection {
                     $data .= " `{$k}` = '{$v}' "; // Add backticks around column names
                 }
             }
+            $loc_id = $this->settings->userdata("loc_id");
+		
+		    $data .= ", `loc_id`={$loc_id} ";
             if (empty($id)) {
                 $qry = $this->conn->query("INSERT INTO vendor_list SET {$data}");
                 if ($qry) {

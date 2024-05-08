@@ -34,7 +34,7 @@ $item_id = isset($_GET['item_id']) ? $_GET['item_id'] : null;
                                     <select name="item_id" id="item_id" class="form-control form-control-sm rounded-0">
                                         <option value="" <?= empty($item_id) ? 'selected' : '' ?>>Select Item</option>
                                         <?php
-                                    $items = $conn->query("SELECT * FROM `item_list`");
+                                    $items = $conn->query("SELECT * FROM `item_list` where delete_flag = 0 AND loc_id=" . $_settings->userdata('loc_id') . " ");
                                     while ($item = $items->fetch_assoc()):
                                     ?>
                                         <option value="<?= $item['id'] ?>"

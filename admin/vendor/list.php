@@ -48,7 +48,7 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
                 <tbody>
                     <?php 
 					$i = 1;
-						$qry = $conn->query("SELECT * from `vendor_list`");
+						$qry = $conn->query("SELECT * from `vendor_list` where loc_id=" . $_settings->userdata('loc_id') . "");
 						while($row = $qry->fetch_assoc()):
 					?>
                     <tr>
