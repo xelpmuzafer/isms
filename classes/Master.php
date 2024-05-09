@@ -51,7 +51,7 @@ Class Master extends DBConnection {
 		
 		$data .= ", `loc_id`={$loc_id} ";
 		//return json_encode($data);
-		$check = $this->conn->query("SELECT * FROM `category_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")." ")->num_rows;
+		$check = $this->conn->query("SELECT * FROM `category_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")."  and loc_id=" . $this->settings->userdata('loc_id') . "")->num_rows;
 		if($this->capture_err())
 			return $this->capture_err();
 		if($check > 0){
@@ -97,7 +97,7 @@ Class Master extends DBConnection {
 		
 		$data .= ", `loc_id`={$loc_id} ";
 
-		$check = $this->conn->query("SELECT * FROM `department_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")." ")->num_rows;
+		$check = $this->conn->query("SELECT * FROM `department_list` where `name` = '{$name}' and delete_flag = 0 ".(!empty($id) ? " and id != {$id} " : "")." and loc_id=" . $this->settings->userdata('loc_id') . "")->num_rows;
 		if($this->capture_err())
 			return $this->capture_err();
 		if($check > 0){

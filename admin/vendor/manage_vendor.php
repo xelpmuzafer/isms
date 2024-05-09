@@ -49,8 +49,10 @@ alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success');
                 </div>
                 <div class="form-group">
                     <label for="username">Phone</label>
-                    <input type="text" name="phone" id="phone" class="form-control"
-                        value="<?php echo isset($meta['phone']) ? $meta['phone']: '' ?>" required autocomplete="off">
+                    <input type="tel" name="phone" id="phone" class="form-control"
+                        minlength="10" maxlength="10" value="<?php echo isset($meta['phone']) ? $meta['phone']: '' ?>" required autocomplete="off" 
+                        oninput="this.value = this.value.replace(/\D/g,'')" onchange="validatephone(this)"
+                        >
                 </div>
                 <div class="form-group">
                     <label for="username">Address</label>
@@ -89,6 +91,15 @@ img#cimg {
 
 <script>
 $('#manage-user').submit(function(e) { // Changed form ID to "manage-user"
+
+    var phone = document.getElementById('phone').value;
+        var phonevalue = phone.toString();
+        if (phonevalue.length < 10){
+            e.preventDefault(); 
+            alert('Phone should have 10 digits.');
+            return false;
+        }
+        
     e.preventDefault();
     start_loader();
     $.ajax({

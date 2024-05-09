@@ -68,7 +68,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
             <select name="vendor_id" id="vendor_id" class="form-control form-control-sm rounded-0" required="required">
                 <option value="" <?= isset($vendor_id) ? 'selected' : '' ?>></option>
                 <?php 
-                $vendors = $conn->query("SELECT * FROM `vendor_list`");
+                $vendors = $conn->query("SELECT * FROM `vendor_list` WHERE loc_id=" . $_settings->userdata('loc_id') . "");
                 while($row= $vendors->fetch_assoc()):
                 ?>
                 <option value="<?= $row['id'] ?>"
@@ -189,6 +189,35 @@ $(document).ready(function() {
             }
         })
     })
+
+    $('#item-form').submit(function(e) {
+        var ratePerUnitValue = parseFloat($('#rate_per_unit').val());
+        var safetyStockValue = parseFloat($('#safety_stock').val());
+        var reorderPointValue = parseFloat($('#reorder_point').val());
+
+        // Check if ratePerUnitValue is negative
+        if (ratePerUnitValue < 0) {
+            e.preventDefault(); // Prevent form submission
+            alert("Rate per unit should not be negative.");
+            return false;
+        }
+         // Check if safetyStockValue is negative
+         if (safetyStockValue < 0) {
+            e.preventDefault(); // Prevent form submission
+            alert("Safety Stock should not be negative.");
+            return false;
+        }
+
+        // Check if reorderPointValue is negative
+        if (reorderPointValue < 0) {
+            e.preventDefault(); // Prevent form submission
+            alert("Reorder Point should not be negative.");
+            return false;
+        }
+
+        // Your existing AJAX form submission code
+        // ...
+    });
 
 })
 </script>
